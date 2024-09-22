@@ -18,7 +18,7 @@ function App() {
                 throw new Error('File_b64 must be a string.');
             }
 
-            const response = await axios.post('http://localhost:5000/bfhl', parsedInput);
+            const response = await axios.post('bajaj-task-smoky-rho.vercel.app', parsedInput);
             setResponseData(response.data);
             setError('');  
         } catch (err) {
