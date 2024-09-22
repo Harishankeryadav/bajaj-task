@@ -88,7 +88,9 @@ router.post('/', async (req, res) => {
 
         // Get highest lowercase alphabet
         const lowercaseAlphabets = alphabets.filter(letter => letter === letter.toLowerCase());
-        const highestLowercaseAlphabet = lowercaseAlphabets.length > 0 ? [lowercaseAlphabets.sort().pop()] : [];
+        // const highestLowercaseAlphabet = lowercaseAlphabets.length > 0 ? [lowercaseAlphabets.sort().pop()] : [];
+     const highestLowercaseAlphabet = lowercaseAlphabets.length > 0 ? [lowercaseAlphabets.sort().pop()] : [];
+
 
         // File handling
         let fileValid = false;
