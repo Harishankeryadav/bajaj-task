@@ -121,8 +121,8 @@ function App() {
             setError('');  
         } catch (err) {
             console.error('Error making API call:', err);
-            // Update error handling to handle network errors
-            setError(err.response ? `API Error: ${err.response.data}` : 'Network Error: Unable to reach the server');
+           setError(err.response ? `API Error: ${err.response.data}` : 'Network Error: Unable to reach the server');
+
         }
     };
 
