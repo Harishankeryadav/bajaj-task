@@ -29,7 +29,7 @@ const App = () => {
   // };
   const handleSubmit = async (data) => {
   try {
-    const response = await fetch("https://bajaj-task-smoky-rho.vercel.app/bfhl", {
+    const response = await fetch("https://bajaj-task-smoky-rho.vercel.app/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),  // Ensure data structure is correct
