@@ -51,39 +51,47 @@
 
 // export default App;
 
+// src/components/App.js
+import React, { useState } from "react";
+import JSONInput from "./JSONInput";
+import ResponseDisplay from "./ResponseDisplay";
+import "./App.css";
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+const App = () => {
+  const [jsonData, setJsonData] = useState(null);
+  const [response, setResponse] = useState(null);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
-function App() {
-    const [operationCode, setOperationCode] = useState(null);
-    const [error, setError] = useState('');
+  const handleSubmit = async data => {
+    setJsonData(data);
+    try {
+      const response = await fetch(
+        "https://bajaj-task-smoky-rho.vercel.app/bfhl",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        }
+      );
+      const result = await response.json();
+      setResponse(result);
+    } catch (error) {
+      console.error("Error:", error);
+      setResponse({ error: "Failed to fetch data from the API." });
+    }
+  };
 
-    useEffect(() => {
-        // On page load, fetch the /bfhl data
-        const fetchOperationCode = async () => {
-            try {
-                const response = await axios.get('https://bajaj-task-smoky-rho.vercel.app/bfhl'); // Make sure this URL points to your deployed backend
-                setOperationCode(response.data.operation_code);
-            } catch (err) {
-                setError('Error fetching operation code: ' + err.message);
-            }
-        };
-
-        fetchOperationCode();
-    }, []); // Only run once when the component mounts
-
-    return (
-        <div>
-            <h1>Your Roll Number</h1>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            {operationCode !== null ? (
-                <p>Operation Code: {operationCode}</p>
-            ) : (
-                <p>Loading...</p>
-            )}
-        </div>
-    );
-}
+  return (
+    <div className="App">
+      <h1>ABCD123</h1>
+      <JSONInput onSubmit={handleSubmit} />
+      <ResponseDisplay
+        response={response}
+        selectedCategories={selectedCategories}
+        setSelectedCategories={setSelectedCategories}
+      />
+    </div>
+  );
+};
 
 export default App;
