@@ -7,11 +7,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require('cors'); 
 
 app.use(cors({
-    origin: ["https://bajaj-task-frontend-nu.vercel.app"], 
+    origin: ["https://bajaj-task-frontend-nu.vercel.app"],
     methods: ["POST", "GET"],
     credentials: true
 }));
-
  
 const bfhlRoutes = require('./routes/bfhl');
  
