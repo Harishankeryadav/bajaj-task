@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
-  origin: ["https://bajaj-frontend-final-amber.vercel.app/bfhl"],
+  origin: ["https://bajaj-frontend-final-amber.vercel.app"],
   methods: ["POST", "GET"],
   credentials: true
 }));
